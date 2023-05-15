@@ -7,6 +7,7 @@ import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Signup } from "./pages/Signup";
 import { UserDashboard } from "./pages/UserDashboard";
+import { CreatePost } from "./pages/CreatePost";
 
 function App() {
   return (
@@ -16,11 +17,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<AuthRouteProtector component={UserDashboard }/>} />
-          <Route
+          <Route path="/dashboard" element={<AuthRouteProtector component={UserDashboard}/>} />
+          <Route path="/postar" element={<AuthRouteProtector component={CreatePost}/>} />
+          
+          
+          {/*<Route
             path="/profile"
             element={<AuthRouteProtector component={Profile} />}
-          />
+          />*/}
 
           <Route path="*" element={<Error />} />
         </Routes>

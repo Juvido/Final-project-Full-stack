@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
-
+import { Link } from "react-router-dom";
 
 export function UserDashboard () {
 
@@ -8,7 +8,9 @@ export function UserDashboard () {
 
     return <>
         <h1> Ola, {loggedInUser.user.name} </h1>
+        <Link to="/postar">
         <button> Fazer nova postagem </button>
+        </Link>
         <h2> Minhas postagens</h2>
     </>
 }
