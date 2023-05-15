@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../api/api";
+import { api } from "../../api/api.js";
 import { AuthContext } from "../../contexts/authContext";
 
 export function Login() {
@@ -19,7 +19,6 @@ export function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       const response = await api.post("/user/login", form);
       setLoggedInUser({ ...response.data });
@@ -27,8 +26,8 @@ export function Login() {
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
 
       navigate("/profile");
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -56,7 +55,7 @@ export function Login() {
       focus-visible:outline-2 focus-visible:outline-offset-2
       focus-visible:outline-indigo-600"
       >
-        Entrar!
+        Entrar
       </button>
     </form>
   );

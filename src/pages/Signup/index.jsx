@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../api/api";
+import { api } from "../../api/api.js";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -8,7 +8,6 @@ export function Signup() {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [img, setImg] = useState("");
@@ -29,21 +28,20 @@ export function Signup() {
       const response = await api.post("/upload-image", uploadData);
 
       return response.data.url;
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       const imgURL = await handleUpload();
       await api.post("/user/signup", { ...form, img: imgURL });
-
+      console.log (api.data)
       navigate("/login");
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -54,6 +52,7 @@ export function Signup() {
         id="formName"
         name="name"
         type="text"
+        required="true"
         value={form.name}
         onChange={handleChange}
       />
@@ -65,6 +64,7 @@ export function Signup() {
         id="formEmail"
         name="email"
         type="email"
+        required="true"
         value={form.email}
         onChange={handleChange}
       />
@@ -73,25 +73,18 @@ export function Signup() {
         id="formPassword"
         name="password"
         type="password"
+        required="true"
         value={form.password}
         onChange={handleChange}
       />
-      <label htmlFor="formConfirmPassword">Confirmação de senha</label>
-      <input
-        id="formConfirmPassword"
-        type="password"
-        name="confirmPassword"
-        value={form.confirmPassword}
-        onChange={handleChange}
-      />
+      
       <button
         type="submit"
         className="rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold
       text-white shadow-sm hover:bg-indigo-500 focus-visible:outline
       focus-visible:outline-2 focus-visible:outline-offset-2
       focus-visible:outline-indigo-600"
-      >
-        Cadastrar
+      > Cadastrar
       </button>
     </form>
   );
