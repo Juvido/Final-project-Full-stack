@@ -1,16 +1,8 @@
-# Template para aplicação React com autenticação + Tailwind
+# Front-end
 
-Tailwind já instalado e pronto para ser utilizado.
-Plugins: @tailwindcss/typography e @tailwindcss/forms
+Front-End project, using React and Tailwind styles.
+It's a part of the final project the Web Development Bootcamp at IronHack.
 
-Tailwind Docs
+## About template Model
 
-- https://tailwindcss.com/docs
-
-Tailwind Components
-
-- https://tailwindui.com/
-
-Hero Icons
-Site - https://heroicons.com/
-Docs - https://github.com/tailwindlabs/heroicons
+The general template was built and provided by Teacher [Alexandre Lima](https://github.com/alexandreatlima/vite-template-tailwind).
