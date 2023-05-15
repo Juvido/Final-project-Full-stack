@@ -37,6 +37,7 @@ export function Signup() {
     e.preventDefault();
     try {
       const imgURL = await handleUpload();
+      
       await api.post("/user/signup", { ...form, img: imgURL });
       console.log (api.data)
       navigate("/login");
@@ -52,7 +53,7 @@ export function Signup() {
         id="formName"
         name="name"
         type="text"
-        required="true"
+        required={true}
         value={form.name}
         onChange={handleChange}
       />
@@ -64,7 +65,7 @@ export function Signup() {
         id="formEmail"
         name="email"
         type="email"
-        required="true"
+        required={true}
         value={form.email}
         onChange={handleChange}
       />
@@ -73,7 +74,7 @@ export function Signup() {
         id="formPassword"
         name="password"
         type="password"
-        required="true"
+        required={true}
         value={form.password}
         onChange={handleChange}
       />

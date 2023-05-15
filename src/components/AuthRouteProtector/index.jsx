@@ -10,8 +10,7 @@ export function AuthRouteProtector(props) {
   const parsedUser = JSON.parse(loggedInUser || '""');
 
   useEffect(() => {
-    console.log(parsedUser);
-    if (parsedUser.token) {
+    if (!parsedUser.token) {
       navigate("/login");
     }
   }, []);

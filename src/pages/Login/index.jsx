@@ -24,8 +24,7 @@ export function Login() {
       setLoggedInUser({ ...response.data });
 
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
-
-      navigate("/profile");
+      navigate("/dashboard");
     } catch (e) {
       console.log(e);
     }
@@ -37,6 +36,7 @@ export function Login() {
       <input
         type="email"
         name="email"
+        required={true}
         value={form.email}
         onChange={handleChange}
       />
@@ -44,6 +44,7 @@ export function Login() {
       <input
         type="password"
         name="password"
+        required={true}
         value={form.password}
         onChange={handleChange}
       />
