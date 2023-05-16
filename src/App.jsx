@@ -8,11 +8,13 @@ import { Profile } from "./pages/Profile";
 import { Signup } from "./pages/Signup";
 import { UserDashboard } from "./pages/UserDashboard";
 import { CreatePost } from "./pages/CreatePost";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <>
       <AuthContextComponent>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />

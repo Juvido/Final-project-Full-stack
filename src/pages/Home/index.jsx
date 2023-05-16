@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export function Home() {
   return (
     <div>
-      <HomeIcon className="h-6 w-6 text-blue-500" />
       <h1 className="text-3xl font-bold underline">
         Em busca da pizza perfeita
       </h1>
