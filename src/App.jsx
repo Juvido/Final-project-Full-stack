@@ -9,6 +9,8 @@ import { Signup } from "./pages/Signup";
 import { UserDashboard } from "./pages/UserDashboard";
 import { CreatePost } from "./pages/CreatePost";
 import { Navbar } from "./components/Navbar";
+import { PostDetails } from "./pages/PostDetails";
+import { CreateComment } from "./pages/Comment";
 
 function App() {
   return (
@@ -19,10 +21,19 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<AuthRouteProtector component={UserDashboard}/>} />
-          <Route path="/postar" element={<AuthRouteProtector component={CreatePost}/>} />
-          
-          
+          <Route
+            path="/dashboard"
+            element={<AuthRouteProtector component={UserDashboard} />}
+          />
+          <Route
+            path="/postar"
+            element={<AuthRouteProtector component={CreatePost} />}
+          />
+          <Route path="/post/:id" element={<PostDetails />} />
+          <Route
+            path="/comentarios/:postId"
+            element={<AuthRouteProtector component={CreateComment} />}
+          />
           {/*<Route
             path="/profile"
             element={<AuthRouteProtector component={Profile} />}

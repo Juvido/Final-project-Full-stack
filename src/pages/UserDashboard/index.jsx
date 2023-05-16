@@ -11,7 +11,8 @@ export function UserDashboard () {
     useEffect (() => {
         async function fetchPosts() {
             try {
-                const response = await api.get("/post/my-posts")
+                const response = await api.get("/post/meus-posts")
+                
                 setPosts([...response.data])
 
             } catch (e) {
@@ -24,13 +25,16 @@ export function UserDashboard () {
     return <>
         <h1> Ola, {loggedInUser ? <strong>{loggedInUser.user.name}</strong> : null} </h1>
         <Link to="/postar">
-        <button> Fazer nova postagem </button>
+        <button> Nova postagem </button>
         </Link> {' '}
+
         <h2> Minhas postagens: </h2>
 
         <ul>
         {posts.map((currentPost) => {
-            return <li key={currentPost._id}>{currentPost.name}</li>
+            return <Link to={`/post/${currentPost._id}`} key={currentPost._id}>
+            <li >{currentPost.name}</li>
+            </Link>
         })}
         </ul>
     </>
