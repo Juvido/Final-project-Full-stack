@@ -12,7 +12,7 @@ export function AuthRouteProtector(props) {
   useEffect(() => {
     if (!parsedUser.token) {
       navigate("/login");
-      console.log(parsedUser)
+      
     }
   }, []);
 

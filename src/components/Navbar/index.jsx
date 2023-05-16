@@ -22,10 +22,10 @@ export function Navbar() {
 
       {location.pathname === "/login" ? null : loggedInUser ? (
         <>
-          
           <Link to="/postar">
             <button>Nova postagem</button>
           </Link>{" "}{" "}
+
           <ConfirmationButton
             functionForExecution={handleLogout}
             confirmationText="Tem certeza que deseja sair?"

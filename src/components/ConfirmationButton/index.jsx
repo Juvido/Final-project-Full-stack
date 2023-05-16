@@ -11,9 +11,7 @@ export function ConfirmationButton(props) {
             props.functionForExecution();
             toast.dismiss(t.id);
           }}
-        >
-          Sim
-        </button>
+        > Sim </button>
       </span>
     ));
   }

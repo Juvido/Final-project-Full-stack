@@ -4,13 +4,13 @@ import { AuthContextComponent } from "./contexts/authContext";
 import { Error } from "./pages/Error";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { Profile } from "./pages/Profile";
 import { Signup } from "./pages/Signup";
 import { UserDashboard } from "./pages/UserDashboard";
 import { CreatePost } from "./pages/CreatePost";
 import { Navbar } from "./components/Navbar";
 import { PostDetails } from "./pages/PostDetails";
 import { CreateComment } from "./pages/Comment";
+//import { AuthHomeProtector } from "./components/AuthHomeProtector";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
       <AuthContextComponent>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />}/>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route
@@ -34,11 +34,6 @@ function App() {
             path="/comentarios/:postId"
             element={<AuthRouteProtector component={CreateComment} />}
           />
-          {/*<Route
-            path="/profile"
-            element={<AuthRouteProtector component={Profile} />}
-          />*/}
-
           <Route path="*" element={<Error />} />
         </Routes>
       </AuthContextComponent>
