@@ -17,27 +17,42 @@ export function Navbar() {
 
   return (
     <>
-    <div className="flex center max-w-9xl p-4 bg-yellow-100" >
-    <img src={Image} alt="pizzas" className="flex w-14"/>{" "}{" "}
+      <div className="mx-auto flex max-w-7xl bg-yellow-200 items-center justify-around p-6 lg:px-8 ">
+        <img src={Image} alt="pizzas" className="flex w-10" />
 
-      {location.pathname === "/login" ? null : loggedInUser ? (
-        <>
-          <Link to="/postar">
-            <button>Nova postagem</button>
-          </Link>{" "}{" "}
+        {location.pathname === "/login" ? (
+          <h2 class="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
+            
+            Em busca da pizza perfeita
+          </h2>
+        ) : loggedInUser ? (
+          <>
+        
+            <h2 class="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
+              
+              Em busca da pizza perfeita
+            </h2>
 
-          <ConfirmationButton
-            functionForExecution={handleLogout}
-            confirmationText="Tem certeza que deseja sair?"
-          >
-            Sair
-          </ConfirmationButton>
-        </>
-      ) : (
-        <Link to="/login">
-          <button>Entrar</button>
-        </Link>
-      )}
+            <ConfirmationButton
+              functionForExecution={handleLogout}
+              confirmationText="Tem certeza que deseja sair?"
+            >
+              Sair
+            </ConfirmationButton>
+          </>
+        ) : (
+          <>
+            <h2 class="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
+              
+              Em busca da pizza perfeita
+            </h2>
+            <Link to="/login">
+              <button class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 border border-gray-400">
+                Entrar
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </>
   );
