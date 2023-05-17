@@ -47,8 +47,12 @@ export function Signup() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="formName">Nome:</label>
+    <form onSubmit={handleSubmit} class="space-y-12">
+    <div class="border-b border-gray-900/10 pb-12">
+    <h2 class="text-base font-semibold leading-7 text-gray-900">Crie aqui o seu perfil</h2>
+      {/*<p class="mt-1 text-sm leading-6 text-gray-600">*nao usaremos seus dados para publicidade</p>*/}
+
+      <label htmlFor="formName">Seu nome:</label>
       <input
         id="formName"
         name="name"
@@ -60,7 +64,7 @@ export function Signup() {
       <label htmlFor="formImg">Sua foto de perfil:</label>
       <input type="file" id="formImg" onChange={handleImage} />
 
-      <label htmlFor="formEmail">E-mail:</label>
+      <label htmlFor="formEmail">Seu email:</label>
       <input
         id="formEmail"
         name="email"
@@ -69,7 +73,7 @@ export function Signup() {
         value={form.email}
         onChange={handleChange}
       />
-      <label htmlFor="formPassword">Senha:</label>
+      <label htmlFor="formPassword">Sua senha:</label>
       <input
         id="formPassword"
         name="password"
@@ -78,7 +82,7 @@ export function Signup() {
         value={form.password}
         onChange={handleChange}
       />
-      
+    </div>  
       <button
         type="submit"
         className="rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold

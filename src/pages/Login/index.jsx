@@ -24,7 +24,7 @@ export function Login() {
       setLoggedInUser({ ...response.data });
 
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
-      navigate("/dashboard");
+      navigate("/feed");
     } catch (e) {
       console.log(e);
     }
@@ -32,7 +32,7 @@ export function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Email:</label>
+      <label>Seu email:</label>
       <input
         type="email"
         name="email"
@@ -40,7 +40,7 @@ export function Login() {
         value={form.email}
         onChange={handleChange}
       />
-      <label>Senha:</label>
+      <label>Sua senha:</label>
       <input
         type="password"
         name="password"

@@ -1,16 +1,16 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { Link } from "react-router-dom";
 import { api } from "../../api/api.js";
 
-export function UserDashboard() {
-  const { loggedInUser } = useContext(AuthContext);
+export function Feed() {
+    const { loggedInUser } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await api.get("/post/meus-posts");
+        const response = await api.get("/post/all-posts");
         setPosts([...response.data]);
       } catch (e) {
         console.log(e);
@@ -19,30 +19,30 @@ export function UserDashboard() {
     fetchPosts();
   }, []);
 
-  return (
-    <>
-      <h1>
+  return <>
+    <h1>
         {" "}
-        Olá, {loggedInUser ? (
+        Ola, {loggedInUser ? (
           <strong>{loggedInUser.user.name}</strong>
         ) : null}{" "}
       </h1>
       <Link to="/postar">
         <button> Nova postagem </button>
       </Link>{" "}
-      <Link to="/feed">
-        <button> Voltar </button>
+      <Link to="/dashboard">
+        <button> Minhas postagens </button>
       </Link>{" "}
-      <h2> Minhas postagens: </h2>
-      <ul>
+
+    <h2> Para voce: </h2>  
+    <ul>
         {posts.map((currentPost) => {
           return (
-            <Link to={`/post/${currentPost._id}`} key={currentPost._id}>
-              <li>{currentPost.name}</li>
+            <Link to={`/post/${currentPost._id}`} >
+              <li key={currentPost._id}>{currentPost.name}</li>
             </Link>
           );
         })}
       </ul>
-    </>
-  );
+  </>
+
 }

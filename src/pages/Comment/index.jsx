@@ -22,7 +22,7 @@ export function CreateComment() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label> Comentario: </label>
+      <label> Comentário: </label>
       <input
         type="text"
         required={true}

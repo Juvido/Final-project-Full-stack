@@ -17,7 +17,7 @@ export function Navbar() {
 
   return (
     <>
-    <div className="flex p-4 bg-yellow-100" >
+    <div className="flex center max-w-9xl p-4 bg-yellow-100" >
     <img src={Image} alt="pizzas" className="flex w-14"/>{" "}{" "}
 
       {location.pathname === "/login" ? null : loggedInUser ? (

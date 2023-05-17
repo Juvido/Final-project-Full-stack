@@ -23,51 +23,57 @@ export function CreatePost() {
     try {
       e.preventDefault();
       await api.post("/post", form);
-      navigate("/dashboard");
+      navigate("/feed");
     } catch (e) {
       console.log(e);
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Nome da Pizza:</label>
-      <input
-        type="text"
-        name="name"
-        onChange={handleChange}
-        value={form.name}
-      />
-      <label>Observacoes:</label>
-      <input
-        type="text"
-        name="notes"
-        onChange={handleChange}
-        value={form.notes}
-      />
-      <label>Principais ingredientes:</label>
-      <input
-        type="text"
-        name="ingredients"
-        onChange={handleChange}
-        value={form.ingredients}
-      />
-      <label>Loja onde comprou:</label>
-      <input
-        type="text"
-        name="store"
-        onChange={handleChange}
-        value={form.store}
-      />
-      <label>Nota de avaliacao:</label>
-      <select name="score" onChange={handleChange} value={form.score}>
-        <option value="1"> 1 </option>
-        <option value="2"> 2 </option>
-        <option value="3"> 3 </option>
-        <option value="4"> 4 </option>
-        <option value="5"> 5 </option>
-      </select>
-      <button>Enviar</button>
-    </form>
+    <>
+      <Link to="/feed">
+        <button> Voltar </button>
+      </Link>{" "}
+      <form onSubmit={handleSubmit}>
+        <label>Nome da Pizza:</label>
+        <input
+          type="text"
+          name="name"
+          onChange={handleChange}
+          value={form.name}
+        />
+        <label>Observações:</label>
+        <input
+          type="text"
+          name="notes"
+          onChange={handleChange}
+          value={form.notes}
+        />
+        <label>Principais ingredientes:</label>
+        <input
+          type="text"
+          name="ingredients"
+          onChange={handleChange}
+          value={form.ingredients}
+        />
+        <label>Loja onde comprou:</label>
+        <input
+          type="text"
+          name="store"
+          onChange={handleChange}
+          value={form.store}
+        />
+        <label>Nota de avaliação:</label>
+        <select name="score" onChange={handleChange} value={form.score}>
+          <option value="0"> - </option>
+          <option value="1"> 1 </option>
+          <option value="2"> 2 </option>
+          <option value="3"> 3 </option>
+          <option value="4"> 4 </option>
+          <option value="5"> 5 </option>
+        </select>
+        <button>Enviar</button>
+      </form>
+    </>
   );
 }

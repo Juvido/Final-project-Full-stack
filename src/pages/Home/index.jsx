@@ -7,8 +7,9 @@ export function Home() {
       <h1 className="text-3xl font-bold underline">
         Em busca da pizza perfeita
       </h1>
-      <p> Pesquise e encontre a melhor pizza! </p>
-      <p> Deixei sua contribuição: avalie e indique </p>
+      <p> Onde encontrar a melhor pizza? </p>
+      <p> Pesquise e encontre! </p>
+      <p> Faça sua contribuição: avalie e indique  </p>
       <Link to="/signup">
         <button> Cadastro </button>
       </Link>

@@ -10,6 +10,7 @@ import { CreatePost } from "./pages/CreatePost";
 import { Navbar } from "./components/Navbar";
 import { PostDetails } from "./pages/PostDetails";
 import { CreateComment } from "./pages/Comment";
+import { Feed } from "./pages/Feed";
 //import { AuthHomeProtector } from "./components/AuthHomeProtector";
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
           <Route
             path="/dashboard"
             element={<AuthRouteProtector component={UserDashboard} />}
+          />
+          <Route
+            path="/feed"
+            element={<AuthRouteProtector component={Feed} />}
           />
           <Route
             path="/postar"

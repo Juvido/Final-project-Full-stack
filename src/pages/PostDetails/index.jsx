@@ -48,7 +48,7 @@ export function PostDetails() {
       <Link to={`/comentarios/${params.id}`}>
         <button> Comentar</button>
       </Link>
-      <h3> Comentarios: </h3>
+      <h3> Comentários: </h3>
 
       {post.comments.length ? (
         <ul>
@@ -59,7 +59,7 @@ export function PostDetails() {
                 {currentComment.creator === loggedInUser.user._id ||
                 post.creator === loggedInUser.user._id ? (
                   <ConfirmationButton
-                    confirmationText="Tem certeza que deseja apagar o conteudo?"
+                    confirmationText="Tem certeza que deseja apagar?"
                     functionForExecution={()=>{
                       handleDelete(currentComment._id, currentIndex)
                     }}
@@ -72,7 +72,7 @@ export function PostDetails() {
           })}
         </ul>
       ) : (
-        <p> Nao ha comentarios. Deixe o seu!</p>
+        <p> Não há comentários. Deixe o seu!</p>
       )}
     </>
   );
