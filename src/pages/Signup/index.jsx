@@ -8,6 +8,7 @@ export function Signup() {
     name: "",
     email: "",
     password: "",
+    avatar: "",
   });
 
   const [img, setImg] = useState("");
@@ -16,17 +17,17 @@ export function Signup() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleImage(e) {
+  function handleChangeImage(e) {
     setImg(e.target.files[0]);
   }
-
+//setImg({...form, avatar: e.target.file[0]})
   async function handleUpload() {
     try {
       const uploadData = new FormData();
-      uploadData.append("picture", img);
+      uploadData.append("picture", img); //na aula o img estava como file
 
-      const response = await api.post("/upload-image", uploadData);
-
+      const response = await api.post("/upload", uploadData); 
+//upload-image => igual insmonia para gerar url. Caminho precisa ser igual ao back?
       return response.data.url;
     } catch (e) {
       console.log(e);
@@ -36,10 +37,10 @@ export function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const imgURL = await handleUpload();
+      const imgURL = await handleUpload(); // handleUpload(form.avatar)
 
-      await api.post("/user/signup", { ...form, img: imgURL });
-      console.log(api.data);
+      await api.post("/user/signup", { ...form, avatar: imgURL });
+      
       navigate("/login");
     } catch (e) {
       console.log(e);
@@ -142,7 +143,7 @@ export function Signup() {
               <input
                 type="file"
                 id="formImg"
-                onChange={handleImage}
+                onChange={handleChangeImage}
                 class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
               />
             </div>

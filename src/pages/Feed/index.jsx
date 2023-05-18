@@ -6,11 +6,14 @@ import { api } from "../../api/api.js";
 export function Feed() {
   const { loggedInUser } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     async function fetchPosts() {
       try {
         const response = await api.get("/post/all-posts");
+        const responseUserInfo = await api.get("/user/profile");
+        setUserInfo({ ...responseUserInfo.data });
         setPosts([...response.data]);
       } catch (e) {
         console.log(e);
@@ -23,11 +26,16 @@ export function Feed() {
     <>
       <div class="flex overflow-hidden bg-gray-100 h-screen pt-5 ">
         <div class="ml-1">
+          <div class="flex items-center gap-x-6">
+            <img class="h-16 w-16 border border-gray-400 rounded-full" src={userInfo.avatar} />
+          
+
           <h1 class="ml-10 text-2xl font-bold tracking-tight text-gray-900">
-            Olá, {" "}
+            Olá,{" "}
             {loggedInUser ? <strong>{loggedInUser.user.name}</strong> : null}
           </h1>
 
+</div>
           <div class="mt-5 mb-5 ml-6 flex items-center justify-start gap-x-6">
             <Link
               to="/postar"
@@ -54,13 +62,18 @@ export function Feed() {
               return (
                 <>
                   <div class="flex flex-col rounded-md mr-2 items-center justify-center border border-gray-300 p-3">
-                    <Link to={`/post/${currentPost._id}`} key={currentPost._id}>
-                      <h3 class="text-2xl text-black-700 bold mb-1">
+                    <Link to={`/post/${currentPost._id}`}>
+                      <h3
+                        class="text-2xl text-black-700 bold mb-1"
+                        key={currentPost._id}
+                      >
                         {currentPost.name}
                       </h3>
                     </Link>
                     <div class="flex justify-center">
-                    <p class="text-sm rounded-sm bg-yellow-200 font-medium text-gray-900 px-2">Nota media: </p>
+                      <p class="text-sm rounded-sm bg-yellow-200 font-medium text-gray-900 px-2">
+                        Nota media:{" "}
+                      </p>
                       <p class="text-sm rounded-sm bg-green-200 font-medium text-gray-900 px-2">
                         {currentPost.score.reduce((acc, currentScore) => {
                           return acc + currentScore;
