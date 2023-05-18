@@ -33,6 +33,7 @@ export function Navbar() {
             <ConfirmationButton
               functionForExecution={handleLogout}
               confirmationText="Tem certeza que deseja sair?"
+              className="-m-2.5 bg-green-200 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 "
             >
               Sair
             </ConfirmationButton>

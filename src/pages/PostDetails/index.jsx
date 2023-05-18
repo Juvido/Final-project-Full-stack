@@ -6,12 +6,9 @@ import { ConfirmationButton } from "../../components/ConfirmationButton/index.js
 
 export function PostDetails() {
   const params = useParams();
-  const [post, setPost] = useState({
-    comments: [],
-    score: []
-  });
+  const [post, setPost] = useState({ score: [], comments: [] });
   const { loggedInUser } = useContext(AuthContext);
-   
+
   useEffect(() => {
     async function fetchPost() {
       try {
@@ -38,45 +35,102 @@ export function PostDetails() {
   }
   return (
     <>
-      <h2>{post.name} </h2>
-      <h4>{post.notes}</h4>
-      <p>{post.ingredients}</p>
-      <p>{post.store}</p>
-      <p> {
-          (post.score.reduce((acc, currentScore)=>{
-        return acc + currentScore.score }, 0) / post.score.length)
-         
-        }
-      </p>
-      <Link to={`/comentarios/${params.id}`}>
-        <button> Comentar</button>
-      </Link>
-      <h3> Comentários: </h3>
+      <div class="ml-12">
+        <div class="m-5 px-4 sm:px-0">
+          <h2 class="text-3xl  font-semibold leading-7 text-gray-900">
+            🍕 {post.name}
+          </h2>
+        </div>
+        <Link to={`/feed`}>
+          <button class="m-1 rounded-sm px-2 py-1 text-sm font-semibold text-orange-800 bg-orange-100 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100">
+            Voltar
+          </button>
+        </Link>
+        <div class="mt-6 border-t border-red-100">
+          <dl class="divide-y divide-red-100">
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-lg font-medium leading-6 text-gray-900">
+                Observações:
+              </dt>
+              <dd class="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {post.notes}
+              </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-lg font-medium leading-6 text-gray-900">
+                Principais ingredientes utilizados:
+              </dt>
+              <dd class="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {post.ingredients}
+              </dd>
+            </div>
 
-      {post.comments.length ? (
-        <ul>
-          {post.comments.map((currentComment, currentIndex) => {
-            return (
-              <>
-                <li key={currentComment._id}> {currentComment.text}</li>
-                {currentComment.creator === loggedInUser.user._id ||
-                post.creator === loggedInUser.user._id ? (
-                  <ConfirmationButton
-                    confirmationText="Tem certeza que deseja apagar?"
-                    functionForExecution={() => {
-                      handleDelete(currentComment._id, currentIndex);
-                    }}
-                  >
-                    Deletar
-                  </ConfirmationButton>
-                ) : null}
-              </>
-            );
-          })}
-        </ul>
-      ) : (
-        <p> Não há comentários. Deixe o seu!</p>
-      )}
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-lg font-medium leading-6 text-gray-900">
+                Loja onde foi comprada:
+              </dt>
+              <dd class="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {post.store}
+              </dd>
+            </div>
+
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-lg font-medium leading-6 text-gray-900">
+                Nota media:
+              </dt>
+              <dd class="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {post.score.reduce((acc, currentScore) => {
+                  return acc + currentScore;
+                }, 0) / post.score.length}
+              </dd>
+            </div>
+
+            <Link to={`/comentarios/${params.id}`}>
+              <button class="m-6 rounded-md border border-orange-500 px-3 py-2 text-xl font-semibold text-white bg-orange-400 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100">
+                Comentar
+              </button>
+            </Link>
+
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-lg font-medium leading-6 text-gray-900">
+                Comentários:
+              </dt>
+
+              {post.comments.length ? (
+                <ul>
+                  {post.comments.map((currentComment, currentIndex) => {
+                    return (
+                      <>
+                        <dd
+                          key={currentComment._id}
+                          class="my-4 h-8 rounded-md text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0 border border-orange-100"
+                        >
+                          {currentComment.text}
+                        </dd>
+
+                        {currentComment.creator === loggedInUser.user._id ||
+                        post.creator === loggedInUser.user._id ? (
+                          <ConfirmationButton
+                            confirmationText="Tem certeza que deseja apagar?"
+                            functionForExecution={() => {
+                              handleDelete(currentComment._id, currentIndex);
+                            }}
+                            className="mt-6 rounded-md border border-gray-400 px-3 py-2 text-lg text-yellow-700 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                          >
+                            Deletar
+                          </ConfirmationButton>
+                        ) : null}
+                      </>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p> Não há comentários. Deixe o seu!</p>
+              )}
+            </div>
+          </dl>
+        </div>
+      </div>
     </>
   );
 }

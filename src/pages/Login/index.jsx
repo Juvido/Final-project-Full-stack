@@ -36,7 +36,7 @@ export function Login() {
       <div class="p-12">
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-4">
-            <label class="block text-sm text-2xl leading-6 text-gray-900">
+            <label class="block text-lg text-2xl leading-6 text-gray-900">
               Seu email:
             </label>
             <input
@@ -45,12 +45,12 @@ export function Login() {
               required={true}
               value={form.email}
               onChange={handleChange}
-              class="rounded-md block flex-1 border border-gray-400 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              class="rounded-md block flex-1 border border-gray-400 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
               placeholder="email cadastrado"
             />
           </div>
           <div class="sm:col-span-4 mb-6">
-            <label class="block text-sm font-medium leading-6 text-gray-900">
+            <label class="block text-lg font-medium leading-6 text-gray-900">
               Sua senha:
             </label>
             <input
@@ -59,7 +59,7 @@ export function Login() {
               required={true}
               value={form.password}
               onChange={handleChange}
-              class="rounded-md block flex-1 border border-gray-400 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+              class="rounded-md block flex-1 border border-gray-400 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
               placeholder="insira sua senha"
             />
           </div>
