@@ -5,7 +5,7 @@ import { api } from "../../api/api.js";
 
 export function Feed() {
   const { loggedInUser } = useContext(AuthContext);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState ([]) ;
 
   useEffect(() => {
     async function fetchPosts() {
@@ -55,13 +55,15 @@ export function Feed() {
                 <>
                   <div class="flex flex-col rounded-md mr-2 items-center justify-center border border-gray-300 p-3">
                     <Link to={`/post/${currentPost._id}`} key={currentPost._id}>
-                      <h3  class="text-md text-gray-700 mb-1">
+                      <h3 class="text-md text-gray-700 mb-1">
                         {currentPost.name}
                       </h3>
                     </Link>
                     <div class="flex justify-center">
                       <p class="text-sm rounded-md bg-yellow-200 font-medium text-gray-900 px-5">
-                        Nota: {currentPost.score}
+                        {currentPost.score.reduce((acc, currentScore) => {
+                          return acc + currentScore;
+                        }, 0) / currentPost.score.length}
                       </p>
                     </div>
                   </div>

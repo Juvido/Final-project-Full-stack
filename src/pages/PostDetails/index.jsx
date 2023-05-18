@@ -8,6 +8,7 @@ export function PostDetails() {
   const params = useParams();
   const [post, setPost] = useState({
     comments: [],
+    score: []
   });
   const { loggedInUser } = useContext(AuthContext);
    
@@ -41,12 +42,11 @@ export function PostDetails() {
       <h4>{post.notes}</h4>
       <p>{post.ingredients}</p>
       <p>{post.store}</p>
-      <p> {post.score}
-        {/*{
+      <p> {
           (post.score.reduce((acc, currentScore)=>{
         return acc + currentScore.score }, 0) / post.score.length)
          
-        }*/}
+        }
       </p>
       <Link to={`/comentarios/${params.id}`}>
         <button> Comentar</button>
