@@ -17,19 +17,16 @@ export function Navbar() {
 
   return (
     <>
-      <div className="mx-auto flex max-w-7xl bg-yellow-200 items-center justify-around p-6 lg:px-8 ">
-        <img src={Image} alt="pizzas" className="flex w-10" />
+      <div className="mx-auto flex py-10 bg-quadriculado items-center justify-around p-6 lg:px-8 quad-background h-auto">
+        <img src={Image} alt="pizzas" className="flex w-12" />
 
         {location.pathname === "/login" ? (
-          <h2 class="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
-            
+          <h2 className="flex p-2 items-center gap-x-1 text-4xl font-bold leading-6 text-gray-900">
             Em busca da pizza perfeita
           </h2>
         ) : loggedInUser ? (
           <>
-        
-            <h2 class="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
-              
+            <h2 className="flex p-2 items-center gap-x-1 text-4xl font-bold leading-6 text-gray-900">
               Em busca da pizza perfeita
             </h2>
 
@@ -42,12 +39,11 @@ export function Navbar() {
           </>
         ) : (
           <>
-            <h2 class="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
-              
+            <h2 className="flex p-2  items-center gap-x-1 text-4xl font-bold leading-6 text-gray-900">
               Em busca da pizza perfeita
             </h2>
             <Link to="/login">
-              <button class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 border border-gray-400">
+              <button className="-m-2.5 bg-green-200 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 ">
                 Entrar
               </button>
             </Link>

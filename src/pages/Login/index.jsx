@@ -36,7 +36,7 @@ export function Login() {
       <div class="p-12">
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-4">
-            <label class="block text-sm font-medium leading-6 text-gray-900">
+            <label class="block text-sm text-2xl leading-6 text-gray-900">
               Seu email:
             </label>
             <input
@@ -68,13 +68,13 @@ export function Login() {
         <div class="mt-6 flex items-center justify-start gap-x-6">
           <button
             type="submit"
-            class="rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="rounded-md bg-orange-500 px-3 py-2 text-xl font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Entrar
           </button>
 
           <Link to="/">
-            <button class="rounded-md px-3 py-2 text-sm font-semibold text-orange-500 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <button class="rounded-md px-3 py-2 text-xl font-semibold text-orange-500 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               Voltar
             </button>
           </Link>

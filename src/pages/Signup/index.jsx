@@ -52,7 +52,7 @@ export function Signup() {
         <h2 class="text-base font-bold font-lg leading-10 text-gray-900">
           Crie aqui o seu perfil
         </h2>
-        {/*<p class="mt-1 text-sm leading-6 text-gray-600">*nao usaremos seus dados para publicidade</p>*/}
+
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-4">
             <label
@@ -82,8 +82,7 @@ export function Signup() {
               htmlFor="formEmail"
               class="block text-sm font-medium leading-6 text-gray-900"
             >
-              {" "}
-              Email:{" "}
+              Email:
             </label>
             <div class="mt-2">
               <input
