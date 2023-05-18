@@ -79,9 +79,9 @@ export function PostDetails() {
                 Nota media:
               </dt>
               <dd class="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {post.score.reduce((acc, currentScore) => {
+                {(post.score.reduce((acc, currentScore) => {
                   return acc + currentScore;
-                }, 0) / post.score.length}
+                }, 0) / post.score.length)}
               </dd>
             </div>
 
@@ -91,7 +91,7 @@ export function PostDetails() {
               </button>
             </Link>
 
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class=" py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-lg font-medium leading-6 text-gray-900">
                 Comentários:
               </dt>
@@ -102,8 +102,8 @@ export function PostDetails() {
                     return (
                       <>
                         <dd
-                          key={currentComment._id}
-                          class="my-4 h-8 rounded-md text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0 border border-orange-100"
+                          key={currentComment._id} 
+                          class="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0 border border-orange-100"
                         >
                           {currentComment.text}
                         </dd>
@@ -115,7 +115,7 @@ export function PostDetails() {
                             functionForExecution={() => {
                               handleDelete(currentComment._id, currentIndex);
                             }}
-                            className="mt-6 rounded-md border border-gray-400 px-3 py-2 text-lg text-yellow-700 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                            className="mt-2 mb-4 rounded-md border border-gray-400 px-3 py-2 text-lg text-yellow-700 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                           >
                             Deletar
                           </ConfirmationButton>
