@@ -17,7 +17,3 @@ You can check the back-end parte [here](https://github.com/Juvido/back-end-final
 
 Now, I'm a Full-Stack developer. 
 Additional details regarding the creator, challenges, and encountered errors during game development can be found [here](https://prezi.com/i/yy3jv3_gina4/).
-
-## About template Model
-
-The general template was built and provided by Teacher [Alexandre Lima](https://github.com/alexandreatlima/vite-template-tailwind).

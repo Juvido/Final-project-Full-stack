@@ -32,7 +32,19 @@ export function PostDetails() {
     } catch (e) {
       console.log(e);
     }
+
+    async function handlePostDelete(postId, currentIndex) {
+      try {
+        await api.delete(`/post/${postId}`);
+        setPost((currentState) => {
+          currentState.posts.splice(currentIndex, 1);
+          return { ...currentState };
+        });
+      } catch (e) {
+        console.log(e);
+      }
   }
+}
   return (
     <>
       <div class="ml-12">
@@ -81,7 +93,7 @@ export function PostDetails() {
               <dd class="mt-1 text-lg leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                 {(post.score.reduce((acc, currentScore) => {
                   return acc + currentScore;
-                }, 0) / post.score.length)}
+                }, 0) / post.score.length).toFixed(1)}
               </dd>
             </div>
 
@@ -114,6 +126,22 @@ export function PostDetails() {
                             confirmationText="Tem certeza que deseja apagar?"
                             functionForExecution={() => {
                               handleDelete(currentComment._id, currentIndex);
+                            }}
+                            className="mt-2 mb-4 rounded-md border border-gray-400 px-3 py-2 text-lg text-yellow-700 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                          >
+                            Deletar
+                          </ConfirmationButton>
+                        ) : null}
+
+                        {currentPost.creator === loggedInUser.user._id ||
+                        post.creator === loggedInUser.user._id ? (
+                          <ConfirmationButton
+                            confirmationText="Tem certeza que deseja apagar?"
+                            functionForExecution={() => {
+                            
+
+                              
+                              handlePostDelete(currentPost._id, currentIndex);
                             }}
                             className="mt-2 mb-4 rounded-md border border-gray-400 px-3 py-2 text-lg text-yellow-700 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                           >
